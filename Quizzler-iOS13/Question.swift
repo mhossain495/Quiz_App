@@ -10,6 +10,6 @@ import Foundation
 
 
 struct Question {
-    let text: String
-    let answer: String
+    let q: String // q refers to question
+    let a: String // a refers to answer
 }

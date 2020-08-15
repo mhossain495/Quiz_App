@@ -14,9 +14,9 @@ class ViewController: UIViewController {
     
     //array of questions
     let quiz = [
-    Question(text:"First Question", answer:"True"),
-    Question(text:"Second Question", answer:"True"),
-    Question(text:"Third Question", answer:"False")]
+    Question(q:"First Question", a:"True"),
+    Question(q:"Second Question", a:"True"),
+    Question(q:"Third Question", a:"False")]
     
     
     
@@ -34,7 +34,7 @@ class ViewController: UIViewController {
         
         let userAnswer = sender.currentTitle
         let actualQuestion = quiz[questionNumber]
-        let actualAnswer = actualQuestion.answer
+        let actualAnswer = actualQuestion.a
         
         if userAnswer == actualAnswer {
             print("Right!")
@@ -53,7 +53,7 @@ class ViewController: UIViewController {
     }
     
     func updateUI() {
-        questionLabel.text = quiz[questionNumber].text
+        questionLabel.text = quiz[questionNumber].q
     }
     
     
