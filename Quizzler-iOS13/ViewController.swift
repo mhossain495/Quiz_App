@@ -12,7 +12,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var trueButton: UIButton!
     @IBOutlet weak var falseButton: UIButton!
     
-    //array of questions
+    // Array of questions.
     
     let quiz = [
     Question(q: "A slug's blood is green.", a: "True"),
@@ -38,7 +38,7 @@ class ViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         
-        //Calling function to display question on UI
+        // Calling function to display question on UI.
         updateUI()
     }
     
@@ -54,7 +54,7 @@ class ViewController: UIViewController {
             sender.backgroundColor = UIColor.red.withAlphaComponent(0.5)
         }
         
-        // Change question number if current question number + 1 is less than total number of quiz array elements
+        // Change question number if current question number + 1 is less than total number of quiz array elements.
         
         if questionNumber + 1 < quiz.count {
             questionNumber += 1
@@ -62,7 +62,7 @@ class ViewController: UIViewController {
             
         }
         
-        // Time delay between animations
+        // Time delay between animations.
         
         let delay = 0.2
         UIView.animate(withDuration: delay, animations: { self.updateUI()
@@ -70,9 +70,10 @@ class ViewController: UIViewController {
         
     }
     
-    // Function to change question and clear True/False button colors after answering question
+    // Function to update progress bar, change question, and clear True/False button colors after answering question.
    
     func updateUI() {
+        progressBar.progress = Float(questionNumber + 1)/Float(quiz.count)
         questionLabel.text = quiz[questionNumber].q
         trueButton.backgroundColor = UIColor.clear
         falseButton.backgroundColor = UIColor.clear
