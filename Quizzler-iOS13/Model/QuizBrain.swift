@@ -24,14 +24,17 @@ struct QuizBrain {
         Question(q: "Chocolate affects a dog's heart and nervous system; a few ounces are enough to kill a small dog.", a: "True")]
     
     var questionNumber = 0
+    var userScore = 0
     
-    func checkAnswer(_ userAnswer: String) -> Bool {
+    
+    mutating func checkAnswer(_ userAnswer: String) -> Bool {
         if userAnswer == quiz[questionNumber].a {
+            userScore += 1
             return true
         } else {
             return false
         }
-
+        
     }
     
     func getQuestionText() -> String {
@@ -39,19 +42,27 @@ struct QuizBrain {
     }
     
     func getProgress() -> Float {
-    let currentProgress = Float(questionNumber + 1)/Float(quiz.count)
-    return currentProgress
+        let currentProgress = Float(questionNumber + 1)/Float(quiz.count)
+        return currentProgress
     }
     
     // Change question number if current question number + 1 is less than total number of quiz array elements.
     
     mutating func nextQuestion() {
-    if questionNumber + 1 < quiz.count {
-        questionNumber += 1
-    } else { questionNumber = 0
+        if questionNumber + 1 < quiz.count {
+            questionNumber += 1
+        } else { questionNumber = 0
+            userScore = 0
+            
+        }
         
+    }
+    
+    func getScore() -> Int {
+        return userScore
     }
     
 }
 
-}
+
+
